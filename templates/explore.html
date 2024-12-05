@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Mobile Data</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Explore Mobile Data</h1>
+
+        <!-- Add Data Form -->
+        <form method="POST" action="/explore" class="mb-4">
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <input type="text" name="DeviceModel" class="form-control" placeholder="Device Model" required>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" name="OperatingSystem" class="form-control" placeholder="Operating System" required>
+                </div>
+                <div class="col-md-2">
+                    <input type="number" name="AppusageTime" class="form-control" placeholder="App Usage Time" required>
+                </div>
+                <div class="col-md-2">
+                    <input type="number" name="BatteryDrain" class="form-control" placeholder="Battery Drain" required>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary w-100">Add Data</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Data Table -->
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Device Model</th>
+                    <th>Operating System</th>
+                    <th>App Usage Time</th>
+                    <th>Battery Drain</th>
+                    <th>Number of apps install</th>
+                    <th>Screen on time</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in content %}
+                <tr>
+                    <td>{{ data.id }}</td>
+                    <td>{{ data.DeviceModel }}</td>
+                    <td>{{ data.OperatingSystem }}</td>
+                    <td>{{ data.AppusageTime }}</td>
+                    <td>{{ data.BatteryDrain }}</td>
+                    <td>{{ data.Numberofappinstall}}</td>
+                    <td> {{ data.Screenontime}}</td>
+                    <td>{{data.Gender}}</td>
+                    <td>{{data.Age}}</td>
+                    <td>
+                        <!-- Edit Button -->
+                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal{{ data.id }}">Edit</button>
+
+                        <!-- Delete Form -->
+                        <form method="POST" action="/explore/delete/{{ data.id }}" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+
+                <!-- Edit Modal -->
+                <div class="modal fade" id="editModal{{ data.id }}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form method="POST" action="/explore/edit/{{ data.id }}">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editModalLabel">Edit Data</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Device Model</label>
+                                        <input type="text" name="DeviceModel" class="form-control" value="{{ data.DeviceModel }}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Operating System</label>
+                                        <input type="text" name="OperatingSystem" class="form-control" value="{{ data.OperatingSystem }}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">App Usage Time</label>
+                                        <input type="number" name="AppusageTime" class="form-control" value="{{ data.AppusageTime }}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Battery Drain</label>
+                                        <input type="number" name="BatteryDrain" class="form-control" value="{{ data.BatteryDrain }}" required>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

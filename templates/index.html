@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Index Page{% endblock %}
+{% block content %}
+
+<!-- Main Content Section -->
+<div class="content">
+    <h2>Explore the Power of Mobile Usage & User Behavior Data</h2>
+    <p>Discover how mobile usage and user behavior data can help optimize user experiences and drive business decisions.</p>
+    <a href="/explore" class="btn" style="text-decoration: none;">Explore Our Data</a>
+</div>
+
+<!-- Footer Section -->
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px;">
+    {% for data in content %}
+    <div class="card-container" style="width: 18rem; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); overflow: hidden; text-align: center;">
+        <div class="card" style="padding: 15px;">
+            <h3 class="card-title" style="margin: 10px 0; color: #222;">Model: {{ data.DeviceModel }}</h3>
+            <p class="card-text" style="margin: 5px 0; font-weight: bold; color: #555;">Operating System: {{ data.OperatingSystem }}</p>
+            <p class="card-text" style="margin: 5px 0; font-weight: bold; color: #555;">Screen Time-Out: {{ data.ScreenOnTime_hours_per_day }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<footer style="text-align: center; background-color: #222; color: white; padding: 10px; margin-top: 40px;">
+    <p>&copy; 2024 Mobile Insights | All Rights Reserved</p>
+</footer>
+
+{% endblock %}

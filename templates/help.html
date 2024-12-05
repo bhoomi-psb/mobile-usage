@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Help - Mobile Device Usage & User Behavior Dataset</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+
+
+        .container {
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 900px;
+            background-color: white;
+        }
+        .faq-section {
+            margin-top: 30px;
+        }
+        .faq-question {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .faq-answer {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .faq-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .faq-button {
+            background-color: #4fa3f7;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            text-align: left;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .faq-button:hover {
+            background-color:  #4fa3f7;
+        }
+        .faq-answer.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+
+
+        <h1>Welcome to the Help Page</h1>
+        <p>Here, you will find frequently asked questions (FAQ) about the mobile device usage and user behavior dataset. This resource aims to provide answers to common questions and guide you in understanding how to use the dataset effectively.</p>
+
+        <div class="faq-section">
+            <h3>Frequently Asked Questions (FAQ)</h3>
+
+            <div class="faq-item">
+                <button class="faq-button" onclick="toggleAnswer(1)">What is the Mobile Device Usage and User Behavior dataset?</button>
+                <div class="faq-answer hidden" id="answer1">
+                    <p>This dataset contains detailed information about user behaviors on mobile devices, including app usage, screen time, device interactions, and location tracking. It is useful for analyzing mobile habits, device preferences, and trends in digital behavior.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-button" onclick="toggleAnswer(2)">What kind of data is included in the dataset?</button>
+                <div class="faq-answer hidden" id="answer2">
+                    <p>The dataset includes information such as:</p>
+                    <ul>
+                        <li>App usage statistics (e.g., app open time, frequency of use, etc.)</li>
+                        <li>Screen time data</li>
+                        <li>User interaction details (e.g., touch patterns, swipe behavior)</li>
+                        <li>Location data (geographical location, activity-related information)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-button" onclick="toggleAnswer(3)">How can I access the dataset?</button>
+                <div class="faq-answer hidden" id="answer3">
+                    <p>You can access the dataset by requesting it through our data request form on the main website. Once approved, you will be given access to the dataset via a secure download link.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-button" onclick="toggleAnswer(4)">How do I interpret the data?</button>
+                <div class="faq-answer hidden" id="answer4">
+                    <p>Each dataset is accompanied by a detailed documentation guide, explaining the variables, data types, and how to interpret them. You can find this documentation on the 'Documentation' section of our website.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-button" onclick="toggleAnswer(5)">Is the dataset anonymized?</button>
+                <div class="faq-answer hidden" id="answer5">
+                    <p>Yes, all personal identifiers have been removed from the dataset to ensure privacy. The data is aggregated and anonymized, complying with data protection regulations.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-button" onclick="toggleAnswer(6)">Who can use this dataset?</button>
+                <div class="faq-answer hidden" id="answer6">
+                    <p>The dataset is available for academic research, data analysis, and commercial purposes. However, users must comply with the terms and conditions outlined in the user agreement.</p>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    <script>
+        function toggleAnswer(id) {
+            const answer = document.getElementById("answer" + id);
+            answer.classList.toggle("hidden");
+        }
+    </script>
+
+</body>
+</html>
+{% endblock %}

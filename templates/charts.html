@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charts</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .chart-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .chart-box {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            width: 400px;
+            text-align: center;
+        }
+
+        canvas {
+            max-width: 100%;
+            height: 200px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Visual Data Insights</h1>
+    <div class="chart-container">
+        <!-- Chart 1 -->
+        <div class="chart-box">
+            <canvas id="chart1"></canvas>
+        </div>
+        <!-- Chart 2 -->
+        <div class="chart-box">
+            <canvas id="chart2"></canvas>
+        </div>
+        <!-- Chart 3 -->
+        <div class="chart-box">
+            <canvas id="chart3"></canvas>
+        </div>
+        <!-- Chart 4 -->
+        <div class="chart-box">
+            <canvas id="chart4"></canvas>
+        </div>
+        <!-- Chart 5 -->
+        <div class="chart-box">
+            <canvas id="chart5"></canvas>
+        </div>
+        <!-- Chart 6 -->
+        <div class="chart-box">
+            <canvas id="chart6"></canvas>
+        </div>
+    </div>
+
+    <a href="/" class="back-button">Back to Home</a>
+
+    <script>
+        // Chart 1: Mobile App Usage
+        const ctx1 = document.getElementById('chart1').getContext('2d');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['Shopping', 'Education', 'Gamming', 'Social Media','Entertainment'],
+                datasets: [{
+                    label: 'Usage (hours)',
+                    data: [6, 4, 3, 8, 6],
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0','#FF7043']
+                }]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Mobile App Usage'
+                    }
+                }
+            }
+        });
+
+        // Chart 2: Time Spent by Age Group
+        const ctx2 = document.getElementById('chart2').getContext('2d');
+        new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['10-20', '21-30', '31-40', '41-50'],
+                datasets: [{
+                    label: 'Average Time Spent (hrs)',
+                    data: [2, 4, 3, 5],
+                    borderColor: '#4BC0C0',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Time Spent by Age Group'
+                    }
+                }
+            }
+        });
+
+        // Chart 3: Daily Active Users
+        const ctx3 = document.getElementById('chart3').getContext('2d');
+        new Chart(ctx3, {
+            type: 'doughnut',
+            data: {
+                labels: ['Android', 'iOS'],
+                datasets: [{
+                    label: 'Users',
+                    data: [70, 30],
+                    backgroundColor: ['#FF6384', '#36A2EB']
+                }]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Daily Active Users'
+                    }
+                }
+            }
+        });
+
+        // Chart 4: Screen on Time
+        const ctx4 = document.getElementById('chart4').getContext('2d');
+        new Chart(ctx4, {
+            type: 'polarArea',
+            data: {
+                labels: ['Short', 'Medium', 'Long'],
+                datasets: [{
+                    label: 'Duration (mins)',
+                    data: [30, 45, 60],
+                    backgroundColor: ['#FFCE56', '#FF6384', '#36A2EB']
+                }]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Screen on Time'
+                    }
+                }
+            }
+        });
+
+        // Chart 5: Activity Radar
+        const ctx5 = document.getElementById('chart5').getContext('2d');
+        new Chart(ctx5, {
+            type: 'radar',
+            data: {
+                labels: ['Reading', 'Gaming', 'Social Media', 'Productivity'],
+                datasets: [{
+                    label: 'Engagement',
+                    data: [6, 8, 5, 7],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: '#36A2EB',
+                    pointBackgroundColor: '#36A2EB'
+                }]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Activity Radar'
+                    }
+                }
+            }
+        });
+
+        // Chart 6: Engagement by Platform
+        const ctx6 = document.getElementById('chart6').getContext('2d');
+        new Chart(ctx6, {
+            type: 'pie',
+            data: {
+                labels: ['Facebook', 'Instagram', 'Twitter', 'Snapchat'],
+                datasets: [{
+                    label: 'Engagement',
+                    data: [25, 40, 15, 20],
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
+                }]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Engagement by Platform'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
